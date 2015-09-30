@@ -1,12 +1,18 @@
 public class BattleField {
 
-    private char[][] mBattleField;
+    public enum Tile {
+        Ocean,
+        Miss,
+        Hit
+    }
+
+    private Tile[][] mBattleField;
 
     private static int MINIMUM_SIZE = 5;
 
     public BattleField(int size) {
         if (size >= MINIMUM_SIZE) {
-            mBattleField = new char[size][size];
+            mBattleField = new Tile[size][size];
             initBoard();
         }
         else {
@@ -20,7 +26,7 @@ public class BattleField {
         int size = size();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                mBattleField[i][j] = '~';
+                mBattleField[i][j] = Tile.Ocean;
             }
         }
     }
@@ -30,14 +36,10 @@ public class BattleField {
     }
 
     /**
-     * Returns the character in the tile mBattleField[x][y]
+     * Returns the {@link Tile} in the tile mBattleField[x][y]
      * @return Returns a '?' if the coordinate is out of bounds.
      */
-    public char tileAt(int x, int y) {
-        if (x < mBattleField.length && y < mBattleField[0].length) {
-            return mBattleField[x][y];
-        }
-
-        return '?';
+    public Tile tileAt(int x, int y) {
+        return mBattleField[x][y];
     }
 }
