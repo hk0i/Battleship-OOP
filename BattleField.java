@@ -96,4 +96,16 @@ public class BattleField {
         mShipLocations[x][y] = true;
         return true;
     }
+    
+    public boolean isValidShipLocation(Point shipLocation) {
+        int fieldSize = size();
+        int x = shipLocation.getX();
+        int y = shipLocation.getY();
+        
+        return shipLocation != Point.INVALID_POINT
+                && x < fieldSize && x >= 0
+                && y < fieldSize && y >= 0
+                && !isShipAtLocation(shipLocation);
+    }
+
 }
