@@ -1,22 +1,27 @@
 import java.util.Scanner;
 
 public class Battleship {
-    private static int MAX_SHIPS = 5;
 
     public static void main(String[] args) {
         BattleField playerField = new BattleField(10);
 
         System.out.println("Get ready to place your ships.");
-        //@TODO: replace the number 5 with the constant MAX_SHIPS
-        System.out.println("You get 5 ships, place them wisely");
+        System.out.println("You get " + ShipDistributor.MAX_SHIPS + " ships, place them wisely");
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.print("Enter coordinates for Ship 1: ");
-        String coordinates = keyboard.nextLine();
+        for (int i = 0; i < ShipDistributor.MAX_SHIPS; i++) {
+            System.out.print("Enter coordinates for Ship 1: ");
+            String coordinates = keyboard.nextLine();
 
-        Point shipLocation = getPoint(coordinates);
-        playerField.addShip(shipLocation.getX(),
-                shipLocation.getY());
+            Point shipLocation = getPoint(coordinates);
+            //TODO: Check if shipLocation is Point.INVALID_POINT
+            if (shipLocation == Point.INVALID_POINT) {
+            	System.out.println("you can't go there thats not on the map!");
+            }
+            else {
+                playerField.addShip(shipLocation.getX(), shipLocation.getY());
+            }
+        }
 
         System.out.println("Player's Field:");
         FieldDisplay playerDisplay = new FieldDisplay(playerField, true);
