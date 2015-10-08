@@ -17,10 +17,13 @@ public class Battleship {
                 String coordinates = keyboard.nextLine();
                 shipLocation = Point.parsePoint(coordinates);
                 
+                //to distinguish between different errors
+                //check first if there's a ship location
                 if (playerField.isShipAtLocation(shipLocation)) {
                     System.out.println("You have already placed a ship at " + coordinates + ", try again.");
                 }
-                else if (!playerField.isValidShipLocation(shipLocation)) {
+                //otherwise check if the ship is not in bounds
+                else if (!playerField.isPointInBounds(shipLocation)) {
                     System.out.println(coordinates + " is not a valid ship location, please try again");
                 }
                 else {

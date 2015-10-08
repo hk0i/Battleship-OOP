@@ -97,15 +97,18 @@ public class BattleField {
         return true;
     }
     
-    public boolean isValidShipLocation(Point shipLocation) {
+    /**
+     * Checks if the ship is in bounds or is already occupied
+     * 
+     * @return true if the point is not occupied by another ship
+     *  AND ship is in bounds of the field
+     */
+    public boolean isValidShipLocation(Point p) {
         int fieldSize = size();
-        int x = shipLocation.getX();
-        int y = shipLocation.getY();
+        int x = p.getX();
+        int y = p.getY();
         
-        return shipLocation != Point.INVALID_POINT
-                && x < fieldSize && x >= 0
-                && y < fieldSize && y >= 0
-                && !isShipAtLocation(shipLocation);
+        return isPointInBounds(p) && !isShipAtLocation(p);
     }
 
 }
