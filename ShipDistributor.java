@@ -5,7 +5,7 @@ import java.util.Random;
  */
 public class ShipDistributor {
 
-    private static int MAX_SHIPS = 5;
+    public static final int MAX_SHIPS = 5;
 
     /**
      * Attempts to place a ship at a random location in the battlefield.

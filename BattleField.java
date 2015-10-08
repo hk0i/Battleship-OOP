@@ -53,13 +53,34 @@ public class BattleField {
     public Tile tileAt(int x, int y) {
         return mBattleField[x][y];
     }
+    
+    /**
+     * Tells whether or not the given point is within the bounds of the gameboard
+     */
+    public boolean isPointInBounds(Point p) {
+        int fieldSize = size();
+        int x = p.getX();
+        int y = p.getY();
+        
+        return p != Point.INVALID_POINT
+                && x < fieldSize && x >= 0
+                && y < fieldSize && y >= 0;
+    }
 
     /**
      * Returns true when a ship is located in the position (x, y).
+     * 
+     * @TODO: refactor to make everything use Points instead of x, y
+     * 
      * @return true if ship is in location, false if it is not
      */
     public boolean isShipAtLocation(int x, int y) {
+        if (!isPointInBounds(new Point(x, y))) return false;
         return mShipLocations[x][y];
+    }
+    
+    public boolean isShipAtLocation(Point p) {
+        return isShipAtLocation(p.getX(), p.getY());
     }
 
     /**

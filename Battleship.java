@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Battleship {
-    private static int MAX_SHIPS = 5;
 
     public static void main(String[] args) {
         BattleField playerField = new BattleField(10);
@@ -11,12 +10,26 @@ public class Battleship {
         System.out.println("You get 5 ships, place them wisely");
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.print("Enter coordinates for Ship 1: ");
-        String coordinates = keyboard.nextLine();
-
-        Point shipLocation = getPoint(coordinates);
-        playerField.addShip(shipLocation.getX(),
-                shipLocation.getY());
+        Point shipLocation = null;
+        for (int i = 0; i < ShipDistributor.MAX_SHIPS; i++) {
+            do {
+                System.out.print(String.format("Enter coordinates for Ship %s: ", i));
+                String coordinates = keyboard.nextLine();
+                shipLocation = getPoint(coordinates);
+                
+                if (playerField.isShipAtLocation(shipLocation)) {
+                    System.out.println("You have already placed a ship at " + coordinates + ", try again.");
+                }
+                else if (!isValidShipLocation(shipLocation, playerField)) {
+                    System.out.println(coordinates + " is not a valid ship location, please try again");
+                }
+                else {
+                    playerField.addShip(shipLocation.getX(), shipLocation.getY());
+                    break;
+                }
+            } while (!isValidShipLocation(shipLocation, playerField));
+        }
+        
 
         System.out.println("Player's Field:");
         FieldDisplay playerDisplay = new FieldDisplay(playerField, true);
@@ -31,6 +44,17 @@ public class Battleship {
         FieldDisplay computerDisplay = new FieldDisplay(computerField, showComputerShips);
         computerDisplay.render();
     }
+    
+    private static boolean isValidShipLocation(Point shipLocation, BattleField field) {
+        int fieldSize = field.size();
+        int x = shipLocation.getX();
+        int y = shipLocation.getY();
+        
+        return shipLocation != Point.INVALID_POINT
+                && x < fieldSize && x >= 0
+                && y < fieldSize && y >= 0
+                && !field.isShipAtLocation(shipLocation);
+    }
 
     /**
      * Converts coordinates from A1 to (0, 0)
@@ -39,12 +63,13 @@ public class Battleship {
     private static Point getPoint(String coordinate) {
         coordinate = coordinate.toUpperCase();
 
-        if (coordinate.length() == 2) {
+        if (coordinate.length() <= 3) {
+            
             char letter = coordinate.charAt(0);
-            char number = coordinate.charAt(1);
+            String number = coordinate.substring(1);
 
             int x = (letter - 'A');
-            int y = Character.getNumericValue(number) - 1;
+            int y = Integer.parseInt(number) - 1;
 
             return new Point(x, y);
         }
