@@ -1,7 +1,8 @@
 public class Battleship {
 
     public static void main(String[] args) {
-        BattleField playerField = new BattleField(10);
+        final int fieldSize = 10;
+        BattleField playerField = new BattleField(fieldSize);
 
         System.out.println("Get ready to place your ships.");
         System.out.println(String.format("You get %d ships, place them wisely",
@@ -9,12 +10,11 @@ public class Battleship {
 
         System.out.println("Player's Field:");
         FieldDisplay playerDisplay = new FieldDisplay(playerField, true);
-        ShipDistributor playerDistributor
-            = new CliShipDistributor(playerField);
+        ShipDistributor playerDistributor = new CliShipDistributor(playerField);
         playerDistributor.placeShips();
         playerDisplay.render();
 
-        BattleField computerField = new BattleField(10);
+        BattleField computerField = new BattleField(fieldSize);
 
         ShipDistributor computerDistributor
             = new RandomShipDistributor(computerField);
