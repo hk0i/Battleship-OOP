@@ -9,12 +9,12 @@ public abstract class BaseShipDistributor implements ShipDistributor {
     /**
      * Returns the coordinates of where the user would like to place the ship
      */
-    protected abstract Point requestShipCoordinates();
+    protected abstract Point requestShipCoordinates(int shipNumber);
 
     /**
      * Places a single ship on the map
      */
-    protected abstract boolean placeSingleShip(int shipNumber, Point shipLocation);
+    protected abstract boolean placeSingleShip(Point shipLocation);
 
     /**
      * Places ships on the {@link BattleField} by getting input
@@ -26,8 +26,8 @@ public abstract class BaseShipDistributor implements ShipDistributor {
         Point shipLocation = null;
         for (int i = 0; i < ShipDistributor.MAX_SHIPS; i++) {
             do {
-                shipLocation = requestShipCoordinates();
-                boolean shipWasAdded = placeSingleShip(i + 1, shipLocation);
+                shipLocation = requestShipCoordinates(i + 1);
+                boolean shipWasAdded = placeSingleShip(shipLocation);
                 if (shipWasAdded) {
                     break;
                 }

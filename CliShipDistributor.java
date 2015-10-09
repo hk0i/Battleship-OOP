@@ -27,7 +27,9 @@ public class CliShipDistributor extends PlayerShipDistributor {
     }
 
     @Override
-    public Point requestShipCoordinates() {
+    public Point requestShipCoordinates(int shipNumber) {
+        displayMessage(String.format("Enter coordinates for Ship %s: ",
+            shipNumber));
         return Point.parsePoint(scannerInstance().nextLine());
     }
 

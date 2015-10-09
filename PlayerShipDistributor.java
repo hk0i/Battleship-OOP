@@ -8,10 +8,9 @@ public abstract class PlayerShipDistributor extends BaseShipDistributor {
     public PlayerShipDistributor(BattleField field) {
         super(field);
     }
-
+    
     @Override
-    protected boolean placeSingleShip(int shipNumber, Point shipLocation) {
-        displayMessage(String.format("Enter coordinates for Ship %s: ", shipNumber));
+    protected boolean placeSingleShip(Point shipLocation) {
 
         //to distinguish between different errors
         //check first if there's a ship location
@@ -26,7 +25,7 @@ public abstract class PlayerShipDistributor extends BaseShipDistributor {
             mBattleField.addShip(shipLocation.getX(), shipLocation.getY());
             return true;
         }
-        
+
         return false;
     }
 }

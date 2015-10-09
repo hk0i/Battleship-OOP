@@ -8,10 +8,11 @@ public class Battleship {
         System.out.println(String.format("You get %d ships, place them wisely",
             ShipDistributor.MAX_SHIPS));
 
-        System.out.println("Player's Field:");
-        FieldDisplay playerDisplay = new FieldDisplay(playerField, true);
         ShipDistributor playerDistributor = new CliShipDistributor(playerField);
         playerDistributor.placeShips();
+        
+        System.out.println("Player's Field:");
+        FieldDisplay playerDisplay = new FieldDisplay(playerField, true);
         playerDisplay.render();
 
         BattleField computerField = new BattleField(fieldSize);

@@ -8,14 +8,14 @@ public class RandomShipDistributor extends BaseShipDistributor {
     public RandomShipDistributor(BattleField field) {
         super(field);
     }
-    
+
     @Override
-    protected Point requestShipCoordinates() {
+    protected Point requestShipCoordinates(int shipNumber) {
         int fieldSize = mBattleField.size();
         Random r = new Random();
         int randomX = r.nextInt(fieldSize);
         int randomY = r.nextInt(fieldSize);
-        
+
         return new Point(randomX, randomY);
     }
 
@@ -24,7 +24,7 @@ public class RandomShipDistributor extends BaseShipDistributor {
      * @TODO: move these random placement methods into a ComputerBattleField subclass
      */
     @Override
-    protected boolean placeSingleShip(int shipNumber, Point shipLocation) {
+    protected boolean placeSingleShip(Point shipLocation) {
         return mBattleField.addShip(shipLocation);
     }
 }
