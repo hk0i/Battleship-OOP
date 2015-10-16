@@ -1,3 +1,13 @@
+package com.code2coda.battleship;
+
+import com.code2coda.battleship.display.FieldDisplay;
+
+import com.code2coda.battleship.gameboard.BattleField;
+
+import com.code2coda.battleship.shipdistribution.ShipDistributor;
+import com.code2coda.battleship.shipdistribution.CliShipDistributor;
+import com.code2coda.battleship.shipdistribution.RandomShipDistributor;
+
 public class Battleship {
 
     public static void main(String[] args) {
@@ -10,7 +20,7 @@ public class Battleship {
 
         ShipDistributor playerDistributor = new CliShipDistributor(playerField);
         playerDistributor.placeShips();
-        
+
         System.out.println("Player's Field:");
         FieldDisplay playerDisplay = new FieldDisplay(playerField, true);
         playerDisplay.render();

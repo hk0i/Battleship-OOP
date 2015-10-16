@@ -1,3 +1,5 @@
+package com.code2coda.battleship.gameboard;
+
 public class BattleField {
 
     //@TODO: Ocean, Miss and Hit are actually properties of the display.

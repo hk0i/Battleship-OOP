@@ -1,3 +1,8 @@
+package com.code2coda.battleship.shipdistribution;
+
+import com.code2coda.battleship.gameboard.BattleField;
+import com.code2coda.battleship.gameboard.Point;
+
 import java.util.Random;
 
 /**

@@ -1,12 +1,12 @@
-$runLine = 'java Battleship'
+$runLine = 'java com.code2coda.battleship.Battleship'
 task :clean do
     puts 'Cleaning Battleship...'
-    sh "rm *.class"
+    sh "find . -iname \"*.class\" -exec rm {} +"
 end
 
 task :build do
     puts 'Compiling Battleship'
-    sh 'javac Battleship.java'
+    sh 'javac com/code2coda/battleship/Battleship.java'
 end
 
 task :run do

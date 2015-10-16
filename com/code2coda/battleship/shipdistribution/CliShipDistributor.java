@@ -1,4 +1,10 @@
+package com.code2coda.battleship.shipdistribution;
+
+import com.code2coda.battleship.gameboard.BattleField;
+import com.code2coda.battleship.gameboard.Point;
+
 import java.util.Scanner;
+
 
 /**
  * Places ships on the {@link BattleField} using the command line interface.

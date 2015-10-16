@@ -1,3 +1,7 @@
+package com.code2coda.battleship.display;
+
+import com.code2coda.battleship.gameboard.BattleField;
+
 public class FieldDisplay {
 
     private BattleField mField;

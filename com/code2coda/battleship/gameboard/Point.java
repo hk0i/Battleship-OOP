@@ -1,3 +1,5 @@
+package com.code2coda.battleship.gameboard;
+
 public class Point {
 
     public static Point INVALID_POINT = new Point(-1, -1);

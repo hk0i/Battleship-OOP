@@ -1,3 +1,9 @@
+package com.code2coda.battleship.shipdistribution;
+
+import com.code2coda.battleship.gameboard.BattleField;
+import com.code2coda.battleship.gameboard.Point;
+
+
 public abstract class BaseShipDistributor implements ShipDistributor {
 
     protected BattleField mBattleField;
