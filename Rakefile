@@ -6,7 +6,7 @@ end
 
 task :build do
     puts 'Compiling Battleship'
-    sh 'javac com/code2coda/battleship/Battleship.java'
+    sh 'javac source/com/code2coda/battleship/Battleship.java -d build/ -cp source/'
 end
 
 task :run do
