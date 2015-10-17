@@ -1,4 +1,4 @@
-$runLine = 'java com.code2coda.battleship.Battleship'
+$runLine = 'java -cp build/ com.code2coda.battleship.Battleship'
 task :clean do
     puts 'Cleaning Battleship...'
     sh "find . -iname \"*.class\" -exec rm {} +"

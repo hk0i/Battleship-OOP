@@ -13,7 +13,7 @@ public abstract class PlayerShipDistributor extends BaseShipDistributor {
     public PlayerShipDistributor(BattleField field) {
         super(field);
     }
-    
+
     @Override
     protected boolean placeSingleShip(Point shipLocation) {
 
@@ -32,5 +32,14 @@ public abstract class PlayerShipDistributor extends BaseShipDistributor {
         }
 
         return false;
+    }
+
+    @Override
+    public void placeShips() {
+        displayMessage("Get ready to place your ships.");
+        displayMessage(String.format("You get %d ships, place them wisely",
+            ShipDistributor.MAX_SHIPS));
+
+        super.placeShips();
     }
 }

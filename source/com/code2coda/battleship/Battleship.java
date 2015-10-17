@@ -14,10 +14,6 @@ public class Battleship {
         final int fieldSize = 10;
         BattleField playerField = new BattleField(fieldSize);
 
-        System.out.println("Get ready to place your ships.");
-        System.out.println(String.format("You get %d ships, place them wisely",
-            ShipDistributor.MAX_SHIPS));
-
         ShipDistributor playerDistributor = new CliShipDistributor(playerField);
         playerDistributor.placeShips();
 
