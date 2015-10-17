@@ -14,7 +14,7 @@ task :run do
 end
 
 task :test do
-    sh "#{$runLine} --show-computer-ships < test_input"
+    sh "#{$runLine} --show-computer-ships < test-input"
 end
 
 task :buildAndRun => [:build, :run] do
