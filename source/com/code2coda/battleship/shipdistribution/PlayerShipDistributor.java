@@ -27,7 +27,7 @@ public abstract class PlayerShipDistributor extends BaseShipDistributor {
             displayMessage("That is not a valid ship location, please try again");
         }
         else {
-            mBattleField.addShip(shipLocation.getX(), shipLocation.getY());
+            mBattleField.addShip(shipLocation.x, shipLocation.y);
             return true;
         }
 

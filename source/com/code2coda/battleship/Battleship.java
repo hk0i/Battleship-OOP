@@ -1,6 +1,7 @@
 package com.code2coda.battleship;
 
 import com.code2coda.battleship.game.Game;
+import com.code2coda.battleship.gameboard.Point;
 
 public class Battleship {
 

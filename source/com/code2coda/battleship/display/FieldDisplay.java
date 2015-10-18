@@ -18,12 +18,19 @@ public class FieldDisplay {
 
     public void render() {
         int size = mField.size();
-        for (int i = 0; i < size; i++) {
+        System.out.print(" ");
+        for (int i = 0; i <= size; i++) {
             for (int j = 0; j < size; j++) {
-                System.out.print(String.format("%c ", tileToChar(i, j)));
+                if (i == 0) {
+                    System.out.print(" " + j);
+                }
+                else {
+                    System.out.print(String.format("%c ", tileToChar(i - 1, j)));
+                }
             }
-
             System.out.println();
+            if (i < mField.size()) System.out.print(String.format("%c ", 'A' + i));
+            else System.out.println();
         }
     }
 

@@ -63,8 +63,8 @@ public class BattleField {
      */
     public boolean isPointInBounds(Point p) {
         int fieldSize = size();
-        int x = p.getX();
-        int y = p.getY();
+        int x = p.x;
+        int y = p.y;
 
         return p != Point.INVALID_POINT
                 && x < fieldSize && x >= 0
@@ -84,7 +84,7 @@ public class BattleField {
     }
 
     public boolean isShipAtLocation(Point p) {
-        return isShipAtLocation(p.getX(), p.getY());
+        return isShipAtLocation(p.x, p.y);
     }
 
     /**
@@ -98,8 +98,8 @@ public class BattleField {
 
     public boolean addShip(Point location) {
         int x, y;
-        x = location.getX();
-        y = location.getY();
+        x = location.x;
+        y = location.y;
 
         if (isShipAtLocation(location)) {
             return false;
@@ -117,8 +117,8 @@ public class BattleField {
      */
     public boolean isValidShipLocation(Point p) {
         int fieldSize = size();
-        int x = p.getX();
-        int y = p.getY();
+        int x = p.x;
+        int y = p.y;
 
         return isPointInBounds(p) && !isShipAtLocation(p);
     }
@@ -134,8 +134,8 @@ public class BattleField {
             boolean shipAtLocation = isShipAtLocation(p);
             Tile resultTile = (shipAtLocation) ? Tile.Hit : Tile.Miss;
             int x, y;
-            x = p.getX();
-            y = p.getY();
+            x = p.x;
+            y = p.y;
             mBattleField[x][y] = resultTile;
             mShipLocations[x][y] = false;
 

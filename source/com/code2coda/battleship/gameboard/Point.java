@@ -1,25 +1,12 @@
 package com.code2coda.battleship.gameboard;
 
-public class Point {
+public class Point extends java.awt.Point {
 
     public static Point INVALID_POINT = new Point(-1, -1);
 
-    private final int mX;
-    private final int mY;
-
     public Point(int x, int y) {
-        mX = x;
-        mY = y;
+        super(x, y);
     }
-
-    public int getX() {
-        return mX;
-    }
-
-    public int getY() {
-        return mY;
-    }
-
 
     /**
      * Converts coordinates from A1 to (0, 0)
@@ -55,6 +42,6 @@ public class Point {
      */
     @Override
     public String toString() {
-        return String.format("%s%d", ('A' + mX), mY + 1);
+        return String.format("%c%d", ('A' + x), y + 1);
     }
 }

@@ -85,6 +85,8 @@ public class Game {
                     if (mComputerField.fire(location)) {
                         System.out.println("Direct hit!");
                         if (mComputerField.areAllShipsDestroyed()) {
+                            displayField("Player 1", mPlayerDisplay);
+                            displayField("Computer", mComputerDisplay);
                             gameOver("Player");
                             return false;
                         }
@@ -94,7 +96,7 @@ public class Game {
                     }
                 }
                 else {
-                    System.out.println(String.format("You already guessed %s, try again", location));
+                    System.out.println(String.format("You already guessed %s, try again", location.toString()));
                 }
             }
         } while (!isInBounds);
