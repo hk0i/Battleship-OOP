@@ -37,7 +37,11 @@ public class FieldDisplay {
                 break;
 
             case Miss:
-                retChar = 'O';
+                //@TODO: this is a code smell / SRP violation
+                //only show misses when we don't show ships :)
+                if (!mShowShips) {
+                    retChar = 'O';
+                }
                 break;
 
             case Hit:

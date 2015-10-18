@@ -26,7 +26,6 @@ public class RandomShipDistributor extends BaseShipDistributor {
 
     /**
      * Attempts to place a ship at a random location in the battlefield.
-     * @TODO: move these random placement methods into a ComputerBattleField subclass
      */
     @Override
     protected boolean placeSingleShip(Point shipLocation) {

@@ -13,6 +13,8 @@ public class BattleField {
 
     //@TODO: split out player's own field from the radar,
     //players should only be able to see their own ships.
+    //players should also only be able to see places they shot.
+    //mBattleField here is actually acting like a radar, keeping track of shots.
 
     private Tile[][] mBattleField; //@TODO: remove and replace with mShipLocations
     /**
@@ -119,6 +121,44 @@ public class BattleField {
         int y = p.getY();
 
         return isPointInBounds(p) && !isShipAtLocation(p);
+    }
+
+    /**
+     * Fires a shot at Point p, returns true if hit;
+     *
+     * @TODO: this may also be an SRP violation, not sure.
+     * @TODO: maybe move to a separate static class to isolate firing (?)
+     */
+    public boolean fire(Point p) {
+        if (isPointInBounds(p)) {
+            boolean shipAtLocation = isShipAtLocation(p);
+            Tile resultTile = (shipAtLocation) ? Tile.Hit : Tile.Miss;
+            int x, y;
+            x = p.getX();
+            y = p.getY();
+            mBattleField[x][y] = resultTile;
+            mShipLocations[x][y] = false;
+
+            return shipAtLocation;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if all ships are eliminated
+     */
+    public boolean areAllShipsDestroyed() {
+        for (int x = 0; x < mShipLocations.length; x++) {
+            for (int y = 0; y < mShipLocations.length; y++) {
+                if (mShipLocations[x][y] == true) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
 }

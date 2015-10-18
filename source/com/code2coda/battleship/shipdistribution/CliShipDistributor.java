@@ -15,7 +15,7 @@ public class CliShipDistributor extends PlayerShipDistributor {
 
     private static Scanner mKeyboard;
 
-    private Scanner scannerInstance() {
+    private synchronized Scanner scannerInstance() {
         if (mKeyboard == null) {
             mKeyboard = new Scanner(System.in);
         }

@@ -19,11 +19,11 @@ public class Point {
     public int getY() {
         return mY;
     }
-    
-    
+
+
     /**
      * Converts coordinates from A1 to (0, 0)
-     * 
+     *
      * @param coordinate String coordinate which is a letter and number
      *    combination such as A1, B3, C10 and as in the original battleship
      *    game
@@ -31,8 +31,8 @@ public class Point {
     public static Point parsePoint(String coordinate) {
         coordinate = coordinate.toUpperCase();
 
-        if (coordinate.length() <= 3) {
-            
+        if (coordinate.length() <= 3 && coordinate.length() >= 2) {
+
             char letter = coordinate.charAt(0);
             String number = coordinate.substring(1);
 
@@ -48,5 +48,13 @@ public class Point {
         else {
             return Point.INVALID_POINT;
         }
+    }
+
+    /**
+     * Returns the location in standard battleship format A1, A2, etc..
+     */
+    @Override
+    public String toString() {
+        return String.format("%s%d", ('A' + mX), mY + 1);
     }
 }
