@@ -14,7 +14,9 @@ public class FieldDisplay {
 
     public void render() {
         int size = mField.size();
+        System.out.println("  1 2 3 4 5 6 7 8 9 10");
         for (int i = 0; i < size; i++) {
+            System.out.print((char)(i + ('A')) + " ");
             for (int j = 0; j < size; j++) {
                 System.out.print(String.format("%c ", tileToChar(i, j)));
             }
